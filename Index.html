@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>🐾 Tier-Lernwelt</title>
+  <meta
+    name="description"
+    content="Entdecke die bunte Welt der Tiere und teste dein Wissen im Tier-Quiz."
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Dekoration -->
+  <div class="background-animal animal-1">🦋</div>
+  <div class="background-animal animal-2">🐝</div>
+  <div class="background-animal animal-3">🦜</div>
+  <div class="background-animal animal-4">🐞</div>
+
+  <!-- Navigation -->
+  <header class="hero">
+
+    <nav class="navigation">
+      <div class="logo">
+        🐾 Tier-Lernwelt
+      </div>
+
+      <div class="nav-links">
+        <a href="#tiere">Tiere</a>
+        <a href="#quiz">Quiz</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero-content">
+
+      <div class="small-title">
+        ENTDECKEN • STAUNEN • LERNEN
+      </div>
+
+      <h1>
+        Die bunte<br>
+        Welt der Tiere 🌍
+      </h1>
+
+      <p>
+        Entdecke spannende Tiere, ihre Lebensräume
+        und teste anschließend dein Wissen.
+      </p>
+
+      <a href="#tiere" class="main-button">
+        🐾 Tiere entdecken
+      </a>
+
+    </div>
+
+    <!-- Hintergrundkreise -->
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+
+  </header>
+
+
+  <!-- Hauptinhalt -->
+  <main>
+
+    <!-- Tiere -->
+    <section id="tiere" class="animals-section">
+
+      <div class="section-header">
+
+        <div>
+          <span class="small-title">
+            UNSERE TIERE
+          </span>
+
+          <h2>
+            Wer lebt wo? 🐾
+          </h2>
+
+          <p>
+            Klicke dich durch unsere Tierwelt.
+          </p>
+        </div>
+
+        <div class="search-box">
+          🔎
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Tier suchen ..."
+            aria-label="Tier suchen"
+          >
+        </div>
+
+      </div>
+
+
+      <div id="animalGrid" class="animal-grid"></div>
+
+      <div id="noResults" class="no-results hidden">
+        🐾 Kein Tier gefunden.
+      </div>
+
+    </section>
+
+
+    <!-- Quiz -->
+    <section id="quiz" class="quiz-section">
+
+      <div class="quiz-card">
+
+        <span class="small-title">
+          🧠 MINI-QUIZ
+        </span>
+
+        <h2>
+          Was weißt du schon?
+        </h2>
+
+        <p id="question">
+          Frage wird geladen ...
+        </p>
+
+        <div id="answers" class="answers"></div>
+
+        <div id="quizResult" class="quiz-result"></div>
+
+        <button
+          id="nextButton"
+          class="main-button hidden"
+        >
+          Nächste Frage →
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="footer-logo">
+      🐾 Tier-Lernwelt
+    </div>
+
+    <p>
+      Lernen kann Spaß machen! 🌈
+    </p>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
