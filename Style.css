@@ -1,0 +1,624 @@
+/* =========================================
+   GRUNDLAGEN
+========================================= */
+
+:root {
+  --dark: #24333d;
+  --green: #3f8268;
+  --green-dark: #2e6651;
+
+  --yellow: #ffd85a;
+  --pink: #f5a9bd;
+  --blue: #a9def2;
+  --cream: #fffaf0;
+
+  --white: #ffffff;
+
+  --shadow:
+    0 15px 40px rgba(36, 51, 61, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: var(--dark);
+  background: var(--cream);
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+  position: relative;
+  z-index: 10;
+
+  max-width: 1150px;
+
+  margin: auto;
+
+  padding: 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav-links a:hover {
+  color: var(--green);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 600px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d9f2df,
+      #fff1bd,
+      #f8c6d4
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+
+  max-width: 850px;
+
+  margin: 80px auto;
+
+  padding: 30px;
+
+  text-align: center;
+}
+
+.small-title {
+  color: var(--green);
+
+  font-size: 0.78rem;
+
+  font-weight: 900;
+
+  letter-spacing: 0.15em;
+}
+
+.hero h1 {
+  margin: 15px 0 25px;
+
+  font-size:
+    clamp(3.2rem, 8vw, 6.5rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.06em;
+}
+
+.hero p {
+  max-width: 650px;
+
+  margin: auto;
+
+  font-size: 1.25rem;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.main-button {
+  display: inline-block;
+
+  margin-top: 30px;
+
+  padding: 14px 25px;
+
+  border: none;
+
+  border-radius: 50px;
+
+  background: var(--green);
+
+  color: white;
+
+  font-size: 1rem;
+
+  font-weight: 800;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(63, 130, 104, 0.25);
+
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.main-button:hover {
+  background: var(--green-dark);
+
+  transform: translateY(-3px);
+}
+
+
+/* =========================================
+   HINTERGRUND-KREISE
+========================================= */
+
+.circle {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.circle-1 {
+  width: 320px;
+  height: 320px;
+
+  right: -80px;
+  top: 80px;
+
+  background: rgba(255, 216, 90, 0.55);
+}
+
+.circle-2 {
+  width: 190px;
+  height: 190px;
+
+  left: -50px;
+  bottom: 40px;
+
+  background: rgba(169, 222, 242, 0.7);
+}
+
+.circle-3 {
+  width: 110px;
+  height: 110px;
+
+  right: 25%;
+  bottom: 30px;
+
+  background: rgba(245, 169, 189, 0.7);
+}
+
+
+/* =========================================
+   TIERE IM HINTERGRUND
+========================================= */
+
+.background-animal {
+  position: absolute;
+
+  z-index: 4;
+
+  font-size: 3rem;
+
+  animation: floating 5s ease-in-out infinite;
+}
+
+.animal-1 {
+  top: 25%;
+  left: 8%;
+}
+
+.animal-2 {
+  top: 17%;
+  right: 15%;
+
+  animation-delay: 1s;
+}
+
+.animal-3 {
+  bottom: 18%;
+  right: 8%;
+
+  animation-delay: 2s;
+}
+
+.animal-4 {
+  bottom: 14%;
+  left: 15%;
+
+  animation-delay: 0.5s;
+}
+
+@keyframes floating {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+
+/* =========================================
+   TIERE-BEREICH
+========================================= */
+
+.animals-section {
+  max-width: 1150px;
+
+  margin: auto;
+
+  padding: 100px 25px;
+}
+
+.section-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: end;
+
+  gap: 30px;
+
+  margin-bottom: 40px;
+}
+
+h2 {
+  margin: 8px 0;
+
+  font-size:
+    clamp(2rem, 5vw, 3.5rem);
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+
+/* =========================================
+   SUCHE
+========================================= */
+
+.search-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px 18px;
+
+  background: white;
+
+  border: 2px solid #e6e1d6;
+
+  border-radius: 50px;
+
+  box-shadow: var(--shadow);
+}
+
+.search-box input {
+  width: 220px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  font-size: 1rem;
+}
+
+
+/* =========================================
+   TIER-KARTEN
+========================================= */
+
+.animal-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.animal-card {
+  padding: 20px;
+
+  background: white;
+
+  border-radius: 28px;
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.animal-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 22px 45px rgba(36, 51, 61, 0.18);
+}
+
+.animal-image {
+  height: 170px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      #eafaff
+    );
+
+  font-size: 6rem;
+}
+
+.animal-card:nth-child(3n + 2)
+.animal-image {
+  background:
+    linear-gradient(
+      135deg,
+      var(--yellow),
+      #fff5cf
+    );
+}
+
+.animal-card:nth-child(3n)
+.animal-image {
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      #ffe8ef
+    );
+}
+
+.animal-card h3 {
+  margin: 18px 0 5px;
+
+  font-size: 1.5rem;
+}
+
+.animal-card p {
+  color: #65737c;
+
+  margin: 0;
+}
+
+.habitat {
+  display: inline-block;
+
+  margin-top: 15px;
+
+  padding: 6px 12px;
+
+  border-radius: 50px;
+
+  background: #eaf5ee;
+
+  color: var(--green);
+
+  font-size: 0.8rem;
+
+  font-weight: 800;
+}
+
+.no-results {
+  text-align: center;
+
+  padding: 40px;
+
+  font-size: 1.2rem;
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-section {
+  padding: 90px 25px;
+
+  background: #dff0e4;
+}
+
+.quiz-card {
+  max-width: 750px;
+
+  margin: auto;
+
+  padding: 45px;
+
+  background: white;
+
+  border-radius: 32px;
+
+  box-shadow: var(--shadow);
+}
+
+.quiz-card > p {
+  font-size: 1.25rem;
+
+  font-weight: 700;
+}
+
+.answers {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+.answer {
+  padding: 15px;
+
+  border: 2px solid #e2e7e4;
+
+  border-radius: 16px;
+
+  background: white;
+
+  color: var(--dark);
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.answer:hover {
+  border-color: var(--green);
+
+  transform: translateY(-2px);
+}
+
+.answer.correct {
+  border-color: #61a779;
+
+  background: #ddf3e4;
+}
+
+.answer.wrong {
+  border-color: #dd879a;
+
+  background: #ffe0e7;
+}
+
+.quiz-result {
+  min-height: 35px;
+
+  margin-top: 20px;
+
+  font-weight: 800;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  padding: 35px 20px;
+
+  text-align: center;
+
+  background: var(--dark);
+
+  color: white;
+}
+
+.footer-logo {
+  font-size: 1.3rem;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .navigation {
+    padding: 20px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .hero-content {
+    margin-top: 50px;
+  }
+
+  .section-header {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .animal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .answers {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-card {
+    padding: 30px 22px;
+  }
+
+  .background-animal {
+    font-size: 2rem;
+  }
+
+}
