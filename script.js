@@ -1,474 +1,109 @@
-/* =========================================
-   TIERDATEN
-========================================= */
+// Tier-Lernwelt: Kartenfilter und Quiz funktionieren vollständig ohne Backend.
 
 const animals = [
-
-  {
-    name: "Löwe",
-    emoji: "🦁",
-    habitat: "Savanne",
-    description:
-      "Löwen leben in Afrika und gehören zu den größten Großkatzen."
-  },
-
-  {
-    name: "Elefant",
-    emoji: "🐘",
-    habitat: "Savanne",
-    description:
-      "Elefanten sind die größten lebenden Landtiere der Erde."
-  },
-
-  {
-    name: "Pinguin",
-    emoji: "🐧",
-    habitat: "Küste",
-    description:
-      "Pinguine können nicht fliegen, sind aber hervorragende Schwimmer."
-  },
-
-  {
-    name: "Delfin",
-    emoji: "🐬",
-    habitat: "Meer",
-    description:
-      "Delfine sind intelligente Meeressäuger und leben häufig in Gruppen."
-  },
-
-  {
-    name: "Giraffe",
-    emoji: "🦒",
-    habitat: "Savanne",
-    description:
-      "Mit ihrem langen Hals können Giraffen Blätter hoch oben in Bäumen erreichen."
-  },
-
-  {
-    name: "Frosch",
-    emoji: "🐸",
-    habitat: "Teich",
-    description:
-      "Frösche leben häufig in der Nähe von Wasser und können weit springen."
-  },
-
-  {
-    name: "Tiger",
-    emoji: "🐯",
-    habitat: "Wald",
-    description:
-      "Tiger sind Einzelgänger und die größten lebenden Katzen."
-  },
-
-  {
-    name: "Papagei",
-    emoji: "🦜",
-    habitat: "Regenwald",
-    description:
-      "Papageien sind sehr intelligente Vögel und besitzen kräftige Schnäbel."
-  },
-
-  {
-    name: "Biene",
-    emoji: "🐝",
-    habitat: "Wiese",
-    description:
-      "Bienen bestäuben Pflanzen und leben meistens in einem Bienenvolk."
-  }
-
+  { name: "Löwe", emoji: "🦁", habitat: "Savanne", description: "Löwen leben in Familien und sind die Könige der Savanne.", tone: "tone-yellow" },
+  { name: "Elefant", emoji: "🐘", habitat: "Savanne", description: "Elefanten sind die größten Landtiere und lieben ihre Herde.", tone: "tone-green" },
+  { name: "Pinguin", emoji: "🐧", habitat: "Küste", description: "Pinguine können nicht fliegen, schwimmen aber wunderbar.", tone: "tone-blue" },
+  { name: "Delfin", emoji: "🐬", habitat: "Meer", description: "Delfine sind kluge Meeressäuger und leben gern in Gruppen.", tone: "tone-blue" },
+  { name: "Giraffe", emoji: "🦒", habitat: "Savanne", description: "Mit ihrem langen Hals erreichen Giraffen Blätter hoch oben.", tone: "tone-yellow" },
+  { name: "Frosch", emoji: "🐸", habitat: "Teich", description: "Frösche mögen feuchte Orte und können weit hüpfen.", tone: "tone-green" },
+  { name: "Tiger", emoji: "🐯", habitat: "Wald", description: "Tiger sind starke Einzelgänger mit einem tollen Streifenfell.", tone: "tone-coral" },
+  { name: "Papagei", emoji: "🦜", habitat: "Regenwald", description: "Papageien sind sehr schlau und können Geräusche nachmachen.", tone: "tone-green" },
+  { name: "Biene", emoji: "🐝", habitat: "Wiese", description: "Bienen bestäuben Blumen und leben gemeinsam in einem Volk.", tone: "tone-yellow" }
 ];
-
-
-/* =========================================
-   TIERKARTEN ANZEIGEN
-========================================= */
-
-const animalGrid =
-  document.getElementById("animalGrid");
-
-const searchInput =
-  document.getElementById("searchInput");
-
-const noResults =
-  document.getElementById("noResults");
-
-
-function displayAnimals(list) {
-
-  animalGrid.innerHTML = "";
-
-  if (list.length === 0) {
-
-    noResults.classList.remove("hidden");
-
-    return;
-  }
-
-  noResults.classList.add("hidden");
-
-
-  list.forEach(animal => {
-
-    const card =
-      document.createElement("article");
-
-    card.className = "animal-card";
-
-    card.innerHTML = `
-
-      <div class="animal-image">
-        ${animal.emoji}
-      </div>
-
-      <h3>
-        ${animal.name}
-      </h3>
-
-      <p>
-        ${animal.description}
-      </p>
-
-      <span class="habitat">
-        📍 ${animal.habitat}
-      </span>
-
-    `;
-
-    animalGrid.appendChild(card);
-
-  });
-
-}
-
-
-/* Erste Anzeige */
-
-displayAnimals(animals);
-
-
-/* =========================================
-   SUCHFUNKTION
-========================================= */
-
-searchInput.addEventListener(
-  "input",
-  function () {
-
-    const search =
-      searchInput.value
-        .toLowerCase()
-        .trim();
-
-    const filtered =
-      animals.filter(animal => {
-
-        return (
-
-          animal.name
-            .toLowerCase()
-            .includes(search)
-
-          ||
-
-          animal.habitat
-            .toLowerCase()
-            .includes(search)
-
-          ||
-
-          animal.description
-            .toLowerCase()
-            .includes(search)
-
-        );
-
-      });
-
-    displayAnimals(filtered);
-
-  }
-);
-
-
-/* =========================================
-   QUIZ
-========================================= */
 
 const questions = [
-
-  {
-    question:
-      "Welches dieser Tiere lebt normalerweise im Wasser?",
-
-    answers: [
-      "🐬 Delfin",
-      "🦁 Löwe",
-      "🦒 Giraffe",
-      "🐝 Biene"
-    ],
-
-    correct: 0
-  },
-
-  {
-    question:
-      "Welches Tier ist das größte Landtier?",
-
-    answers: [
-      "🐸 Frosch",
-      "🐘 Elefant",
-      "🐧 Pinguin",
-      "🐝 Biene"
-    ],
-
-    correct: 1
-  },
-
-  {
-    question:
-      "Welches Tier bestäubt viele Pflanzen?",
-
-    answers: [
-      "🐯 Tiger",
-      "🦁 Löwe",
-      "🐝 Biene",
-      "🐬 Delfin"
-    ],
-
-    correct: 2
-  },
-
-  {
-    question:
-      "Welches Tier hat einen besonders langen Hals?",
-
-    answers: [
-      "🐸 Frosch",
-      "🐧 Pinguin",
-      "🦒 Giraffe",
-      "🐝 Biene"
-    ],
-
-    correct: 2
-  },
-
-  {
-    question:
-      "Welches dieser Tiere kann nicht fliegen?",
-
-    answers: [
-      "🦜 Papagei",
-      "🐧 Pinguin",
-      "🐝 Biene",
-      "🦋 Schmetterling"
-    ],
-
-    correct: 1
-  }
-
+  { text: "Welche dieser Tiere lebt normalerweise im Wasser?", answers: ["🐬 Delfin", "🦁 Löwe", "🦒 Giraffe", "🐝 Biene"], correct: 0 },
+  { text: "Welches Tier ist das größte Landtier?", answers: ["🐸 Frosch", "🐘 Elefant", "🐧 Pinguin", "🐝 Biene"], correct: 1 },
+  { text: "Welches Tier bestäubt viele Pflanzen?", answers: ["🐯 Tiger", "🦁 Löwe", "🐝 Biene", "🐬 Delfin"], correct: 2 }
 ];
 
+const $ = (id) => document.getElementById(id);
+
+function renderAnimals(list) {
+  $("animalGrid").innerHTML = list.map((animal) => `
+    <article class="animal-card">
+      <div class="animal-visual ${animal.tone}" aria-hidden="true">${animal.emoji}</div>
+      <h3>${animal.name}</h3>
+      <p>${animal.description}</p>
+      <span class="habitat">📍 ${animal.habitat}</span>
+    </article>
+  `).join("");
+  $("noResults").classList.toggle("hidden", list.length > 0);
+}
+
+$("searchInput").addEventListener("input", (event) => {
+  const term = event.target.value.toLocaleLowerCase("de-DE").trim();
+  renderAnimals(animals.filter((animal) => `${animal.name} ${animal.habitat} ${animal.description}`.toLocaleLowerCase("de-DE").includes(term)));
+});
 
 let currentQuestion = 0;
-
 let score = 0;
-
-let questionAnswered = false;
-
-
-const questionElement =
-  document.getElementById("question");
-
-const answersElement =
-  document.getElementById("answers");
-
-const resultElement =
-  document.getElementById("quizResult");
-
-const nextButton =
-  document.getElementById("nextButton");
-
-
-/* =========================================
-   FRAGE ANZEIGEN
-========================================= */
+let answered = false;
 
 function showQuestion() {
+  const question = questions[currentQuestion];
+  $("progressText").textContent = `Frage ${currentQuestion + 1} von ${questions.length}`;
+  $("progressBar").style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+  $("question").textContent = question.text;
+  $("answers").innerHTML = "";
+  $("quizResult").textContent = "";
+  $("nextButton").classList.add("hidden");
+  answered = false;
 
-  const question =
-    questions[currentQuestion];
-
-  questionElement.textContent =
-    question.question;
-
-  answersElement.innerHTML = "";
-
-  resultElement.textContent = "";
-
-  nextButton.classList.add("hidden");
-
-  questionAnswered = false;
-
-
-  question.answers.forEach(
-    (answer, index) => {
-
-      const button =
-        document.createElement("button");
-
-      button.className = "answer";
-
-      button.textContent = answer;
-
-      button.dataset.index = index;
-
-      button.addEventListener(
-        "click",
-        checkAnswer
-      );
-
-      answersElement.appendChild(button);
-
-    }
-  );
-
-}
-
-
-/* =========================================
-   ANTWORT PRÜFEN
-========================================= */
-
-function checkAnswer(event) {
-
-  if (questionAnswered) {
-    return;
-  }
-
-  questionAnswered = true;
-
-
-  const selected =
-    Number(event.target.dataset.index);
-
-  const correct =
-    questions[currentQuestion].correct;
-
-
-  const buttons =
-    document.querySelectorAll(".answer");
-
-
-  buttons.forEach(button => {
-
-    button.disabled = true;
-
+  question.answers.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.className = "answer";
+    button.type = "button";
+    button.textContent = answer;
+    button.addEventListener("click", () => checkAnswer(button, index));
+    $("answers").appendChild(button);
   });
-
-
-  if (selected === correct) {
-
-    event.target.classList.add("correct");
-
-    resultElement.textContent =
-      "🎉 Richtig! Super gemacht!";
-
-    score++;
-
-  } else {
-
-    event.target.classList.add("wrong");
-
-    buttons[correct]
-      .classList.add("correct");
-
-    resultElement.textContent =
-      "🙂 Fast! Die richtige Antwort ist grün markiert.";
-
-  }
-
-
-  nextButton.classList.remove("hidden");
-
 }
 
+function checkAnswer(selectedButton, selectedIndex) {
+  if (answered) return;
+  answered = true;
+  const correctIndex = questions[currentQuestion].correct;
+  const buttons = [...document.querySelectorAll(".answer")];
+  buttons.forEach((button) => { button.disabled = true; });
+  buttons[correctIndex].classList.add("correct");
 
-/* =========================================
-   NÄCHSTE FRAGE
-========================================= */
-
-nextButton.addEventListener(
-  "click",
-  function () {
-
-    currentQuestion++;
-
-
-    if (
-      currentQuestion >=
-      questions.length
-    ) {
-
-      showFinalResult();
-
-    } else {
-
-      showQuestion();
-
-    }
-
+  if (selectedIndex === correctIndex) {
+    score += 1;
+    $("quizResult").textContent = "🎉 Richtig! Super gemacht!";
+  } else {
+    selectedButton.classList.add("wrong");
+    $("quizResult").textContent = "🙂 Fast! Die richtige Antwort ist grün markiert.";
   }
-);
-
-
-/* =========================================
-   ENDRESULTAT
-========================================= */
+  $("nextButton").classList.remove("hidden");
+}
 
 function showFinalResult() {
-
-  questionElement.textContent =
-    "🌟 Quiz geschafft!";
-
-  answersElement.innerHTML = "";
-
-  resultElement.textContent =
-    `Du hast ${score} von ${questions.length} Fragen richtig beantwortet!`;
-
-  nextButton.textContent =
-    "🔄 Nochmal spielen";
-
-  nextButton.classList.remove("hidden");
-
-
-  nextButton.onclick =
-    restartQuiz;
-
+  $("progressText").textContent = "Quiz geschafft!";
+  $("progressBar").style.width = "100%";
+  $("question").textContent = "🌟 Das hast du toll gemacht!";
+  $("answers").innerHTML = "";
+  $("quizResult").textContent = `Du hast ${score} von ${questions.length} Fragen richtig! 🌟`;
+  $("nextButton").textContent = "🔄 Quiz erneut starten";
+  $("nextButton").classList.remove("hidden");
+  $("nextButton").onclick = restartQuiz;
 }
 
-
-/* =========================================
-   QUIZ NEUSTARTEN
-========================================= */
+function nextQuestion() {
+  currentQuestion += 1;
+  if (currentQuestion >= questions.length) showFinalResult();
+  else showQuestion();
+}
 
 function restartQuiz() {
-
   currentQuestion = 0;
-
   score = 0;
-
-  nextButton.textContent =
-    "Nächste Frage →";
-
-  nextButton.onclick = null;
-
+  $("nextButton").textContent = "Nächste Frage →";
+  $("nextButton").onclick = nextQuestion;
   showQuestion();
-
 }
 
-
-/* =========================================
-   QUIZ STARTEN
-========================================= */
-
+$("nextButton").addEventListener("click", nextQuestion);
+renderAnimals(animals);
 showQuestion();

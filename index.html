@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tier-Lernwelt – entdecke Tiere, ihre Lebensräume und teste dein Wissen.">
+  <title>🐾 Tier-Lernwelt</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="hero" id="start">
+    <div class="blob blob-one" aria-hidden="true"></div>
+    <div class="blob blob-two" aria-hidden="true"></div>
+    <div class="dot dot-one" aria-hidden="true"></div>
+    <div class="dot dot-two" aria-hidden="true"></div>
+    <span class="floating-animal animal-a" aria-hidden="true">🦋</span>
+    <span class="floating-animal animal-b" aria-hidden="true">🐝</span>
+    <span class="floating-animal animal-c" aria-hidden="true">🦜</span>
+
+    <nav class="nav container" aria-label="Hauptnavigation">
+      <a class="brand" href="#start" aria-label="Zur Startseite">🐾 <span>Tier-Lernwelt</span></a>
+      <div class="nav-links">
+        <a href="#tiere">Tiere</a>
+        <a href="#quiz">Quiz</a>
+      </div>
+    </nav>
+
+    <div class="hero-content container">
+      <p class="eyebrow">ENTDECKEN · STAUNEN · LERNEN</p>
+      <h1>Die bunte<br><span>Welt der Tiere</span></h1>
+      <p class="hero-text">Entdecke spannende Tiere und lerne spielerisch etwas über ihre Lebensräume.</p>
+      <a class="button button-primary" href="#tiere">Tiere entdecken <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="animals-section container" id="tiere" aria-labelledby="animals-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">UNSERE TIERE</p>
+          <h2 id="animals-title">Wer lebt wo? <span aria-hidden="true">🌍</span></h2>
+          <p>Finde heraus, wo deine Lieblingstiere zu Hause sind.</p>
+        </div>
+        <label class="search-box">
+          <span aria-hidden="true">🔎</span>
+          <span class="sr-only">Tier oder Lebensraum suchen</span>
+          <input id="searchInput" type="search" placeholder="Tier suchen …" autocomplete="off">
+        </label>
+      </div>
+      <div id="animalGrid" class="animal-grid" aria-live="polite"></div>
+      <p id="noResults" class="no-results hidden">🐾 Oh! Kein Tier gefunden. Versuch es noch einmal.</p>
+    </section>
+
+    <section class="quiz-section" id="quiz" aria-labelledby="quiz-title">
+      <div class="quiz-card container-small">
+        <p class="eyebrow">🧠 MINI-QUIZ</p>
+        <h2 id="quiz-title">Was weißt du schon?</h2>
+        <div class="progress-row"><span id="progressText">Frage 1 von 3</span><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div></div>
+        <p id="question" class="question">Frage wird geladen …</p>
+        <div id="answers" class="answers" role="group" aria-label="Antwortmöglichkeiten"></div>
+        <p id="quizResult" class="quiz-result" aria-live="assertive"></p>
+        <button id="nextButton" class="button button-primary hidden" type="button">Nächste Frage <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><strong>🐾 Tier-Lernwelt</strong><span>Mit Freude lernen! 🌈</span></div></footer>
+</body>
+</html>
